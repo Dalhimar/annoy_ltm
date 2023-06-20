@@ -16,8 +16,12 @@ class KeywordTally:
 
             if self.keyword_tally_count[keyword] > self.most_common_count:
                 self.most_common_count = self.keyword_tally_count[keyword]
-
+                
     def get_significance(self, keywords):
+        #Edit to fix division by 0 error
+        if len(keywords) == 0:
+            return 0  # Return a default value when the list is empty
+    
         significance = 0
         for keyword in keywords:
             if keyword in self.keyword_tally_count:
